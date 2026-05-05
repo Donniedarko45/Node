@@ -1,4 +1,4 @@
-# Nodebase - Quick Start Guide
+# Autoflux - Quick Start Guide
 
 ## 🚀 What We've Built So Far
 
@@ -30,7 +30,7 @@ Create a `.env` file in the root:
 
 ```env
 # Database
-DATABASE_URL="postgresql://user:password@host:5432/nodebase"
+DATABASE_URL="postgresql://user:password@host:5432/Autoflux"
 
 # Encryption (generate a random 32-char string)
 ENCRYPTION_KEY="your-32-character-secret-key-here"

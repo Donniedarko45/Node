@@ -18,7 +18,7 @@ export const auth = betterAuth({
           products: [
             {
               productId: "8b1767fe-754e-4d4f-8a1d-a5250045443a",
-              slug: "Nodebase-pro", // Custom slug for easy reference in Checkout URL, e.g. /checkout/Nodebase-pro
+              slug: "Autoflux-pro", // Custom slug for easy reference in Checkout URL, e.g. /checkout/Autoflux-pro
             },
           ],
           successUrl: process.env.POLAR_SUCCESS_URL,

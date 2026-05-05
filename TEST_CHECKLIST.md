@@ -1,4 +1,4 @@
-# ✅ Nodebase - Testing Checklist
+# ✅ Autoflux - Testing Checklist
 
 ## Database Migration Complete! 🎉
 

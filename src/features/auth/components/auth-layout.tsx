@@ -13,11 +13,11 @@ export const AuthLayout = async ({children}:{children:React.ReactNode}) => {
         >
           <Image
             src="/logos/logo.svg"
-            alt="Nodebase"
+            alt="Autoflux"
             height={30}
             width={30}
           ></Image>
-          Nodebase
+          Autoflux
           
         </Link>
         {children}

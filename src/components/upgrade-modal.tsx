@@ -32,7 +32,7 @@ export const UpgradeModal = ({ open, onOpenChange }: upgradeModalProps) => {
           <AlertDialogCancel>Cancel</AlertDialogCancel>
           <AlertDialogAction
             onClick={() => {
-              authClient.checkout({ slug: "Nodebase-pro" });
+              authClient.checkout({ slug: "Autoflux-pro" });
             }}
           >
             Upgrade now

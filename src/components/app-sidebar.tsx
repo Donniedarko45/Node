@@ -67,11 +67,11 @@ export const Appsidebar = () => {
             <Link href="/" prefetch>
               <Image
                 src="logos/logo.svg"
-                alt="Nodebase Logo"
+                alt="Autoflux Logo"
                 width={50}
                 height={50}
               ></Image>
-              <span className="font-semibold text-lg">Nodebase</span>
+              <span className="font-semibold text-lg">Autoflux</span>
             </Link>
           </SidebarMenuButton>
         </SidebarMenuItem>
@@ -112,7 +112,7 @@ export const Appsidebar = () => {
               <SidebarMenuButton
                 tooltip="upgrade to pro"
                 className="gap-x-4 h-10 px-4"
-                onClick={() => authClient.checkout({ slug: "Nodebase-pro" })}
+                onClick={() => authClient.checkout({ slug: "Autoflux-pro" })}
               >
                 <StarIcon className="w-4 h-4" />
                 <span>Upgrade to Pro</span>

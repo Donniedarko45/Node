@@ -1,4 +1,4 @@
-# 🚀 Nodebase - Ready to Run!
+# 🚀 Autoflux - Ready to Run!
 
 ## ✅ Phase 1 Complete: Core Infrastructure
 
@@ -62,7 +62,7 @@ Create `.env` file:
 
 ```env
 # Database (PostgreSQL)
-DATABASE_URL="postgresql://user:password@host:5432/nodebase"
+DATABASE_URL="postgresql://user:password@host:5432/Autoflux"
 
 # Encryption (32+ character random string)
 ENCRYPTION_KEY="your-32-character-secret-key-here-change-this"
