@@ -7,6 +7,9 @@ import {
   KeyIcon,
   LogOutIcon,
   StarIcon,
+  LayoutTemplateIcon,
+  BarChart3Icon,
+  MonitorIcon,
 } from "lucide-react";
 
 import { authClient } from "@/lib/auth-client";
@@ -38,6 +41,21 @@ const menuItems = [
         title: "workflows",
         icon: FolderOpenIcon,
         url: "/workflows",
+      },
+      {
+        title: "templates",
+        icon: LayoutTemplateIcon,
+        url: "/templates",
+      },
+      {
+        title: "live monitor",
+        icon: MonitorIcon,
+        url: "/monitor",
+      },
+      {
+        title: "analytics",
+        icon: BarChart3Icon,
+        url: "/analytics",
       },
       {
         title: "credenetials",

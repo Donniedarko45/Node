@@ -10,7 +10,7 @@ import {
 
 import { Button } from "@/components/ui/button";
 import { SidebarTrigger } from "@/components/ui/sidebar";
-import { SaveIcon } from "lucide-react";
+import { PlayIcon, SaveIcon } from "lucide-react";
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 
@@ -19,6 +19,8 @@ import {
   useSuspenseWorkflow,
   useUpdateWorkfowName,
 } from "@/features/workflows/hooks/use-workflows";
+import { useRunWorkflow } from "@/features/workflows/hooks/use-run-workflow";
+import { toast } from "sonner";
 
 export const EditorBreadCrumbs = ({ workflowId }: { workflowId: string }) => {
   return (
@@ -38,13 +40,44 @@ export const EditorBreadCrumbs = ({ workflowId }: { workflowId: string }) => {
   );
 };
 
+export const EditorRunButton = ({ workflowId }: { workflowId: string }) => {
+  const runWorkflow = useRunWorkflow();
+
+  const handleRun = async () => {
+    try {
+      const result = await runWorkflow.mutateAsync({ workflowId });
+      
+      // Optionally show node execution details
+      if (result.nodeResults && result.nodeResults.length > 0) {
+        console.log("Node execution results:", result.nodeResults);
+      }
+    } catch (error: any) {
+      // Error is already handled in the hook with toast
+      console.error("Workflow execution failed:", error);
+    }
+  };
+
+  return (
+    <Button
+      onClick={handleRun}
+      disabled={runWorkflow.isPending}
+      variant="default"
+      className="gap-2"
+    >
+      <PlayIcon className="size-4" />
+      {runWorkflow.isPending ? "Running..." : "Run Workflow"}
+    </Button>
+  );
+};
+
 export const EditorSaveButton = ({ workflowId }: { workflowId: string }) => {
   return (
-    <div className="ml-auto">
-      <Button onClick={() => {}} disabled={false}>
-        <SaveIcon size={4} />
+    <div className="ml-auto flex gap-2">
+      <EditorRunButton workflowId={workflowId} />
+      <Button onClick={() => {}} disabled={false} variant="outline">
+        <SaveIcon className="size-4" />
         Save
-      </Button>{" "}
+      </Button>
     </div>
   );
 };
@@ -109,8 +142,7 @@ export const EditorNameInput = ({ workflowId }: { workflowId: string }) => {
         onKeyDown={handleKeyDown}
         className="h-7 w-auto min-w-100 px-2"
       />
-       
-    ); 
+    );
   }
 
   return (

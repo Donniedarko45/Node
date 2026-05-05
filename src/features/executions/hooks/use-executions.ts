@@ -1,28 +1,54 @@
-import { useTRPC as trpc } from "@/trpc/client";
+"use client";
+
+import { useTRPC } from "@/trpc/client";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import { useExecutionsParams } from "./use-executions-params";
 
 export const useExecutions = () => {
+  const trpc = useTRPC();
   const [params] = useExecutionsParams();
-  return trpc.executions.getMany.useSuspenseQuery(params);
+  
+  // Filter out null values - nuqs returns null but tRPC expects undefined
+  const cleanParams = {
+    page: params.page,
+    pageSize: params.pageSize,
+    ...(params.workflowId && { workflowId: params.workflowId }),
+  };
+  
+  return useSuspenseQuery(trpc.executions.getMany.queryOptions(cleanParams));
 };
 
 export const useSuspenseExecutions = () => {
+  const trpc = useTRPC();
   const [params] = useExecutionsParams();
-  return trpc.executions.getMany.useSuspenseQuery(params);
+  
+  // Filter out null values - nuqs returns null but tRPC expects undefined
+  const cleanParams = {
+    page: params.page,
+    pageSize: params.pageSize,
+    ...(params.workflowId && { workflowId: params.workflowId }),
+  };
+  
+  return useSuspenseQuery(trpc.executions.getMany.queryOptions(cleanParams));
 };
 
 export const useExecution = (id: string) => {
-  return trpc.executions.getOne.useSuspenseQuery({ id });
+  const trpc = useTRPC();
+  return useSuspenseQuery(trpc.executions.getOne.queryOptions({ id }));
 };
 
 export const useSuspenseExecution = (id: string) => {
-  return trpc.executions.getOne.useSuspenseQuery({ id });
+  const trpc = useTRPC();
+  return useSuspenseQuery(trpc.executions.getOne.queryOptions({ id }));
 };
 
 export const useWorkflowExecutions = (workflowId: string) => {
-  return trpc.executions.getByWorkflow.useSuspenseQuery({
-    workflowId,
-    page: 1,
-    pageSize: 10,
-  });
+  const trpc = useTRPC();
+  return useSuspenseQuery(
+    trpc.executions.getByWorkflow.queryOptions({
+      workflowId,
+      page: 1,
+      pageSize: 10,
+    })
+  );
 };

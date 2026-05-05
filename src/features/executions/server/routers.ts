@@ -41,8 +41,8 @@ export const executionsRouter = createTRPCRouter({
           .min(Pagination.MIN_PAGE_SIZE)
           .max(Pagination.MAX_PAGE_SIZE)
           .default(Pagination.DEFAULT_PAGE_SIZE),
-        workflowId: z.string().optional(),
-        status: z.nativeEnum(ExecutionStatus).optional(),
+        workflowId: z.string().nullish(),
+        status: z.nativeEnum(ExecutionStatus).nullish(),
       }),
     )
     .query(async ({ ctx, input }) => {
